@@ -4,9 +4,17 @@ Tracks 367 days of continuous automated updates and Python code generation.
 """
 
 import os
+import sys
+import io
 import json
 import random
 from datetime import datetime, timezone
+
+# Ensure UTF-8 output encoding across Windows terminals
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.stderr.encoding != 'utf-8':
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 TOTAL_DAYS_TARGET = 367
 DATA_FILE = "activity_log.json"
