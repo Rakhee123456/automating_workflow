@@ -2,9 +2,9 @@ name: Autonomous Daily Python Push
 
 on:
   schedule:
-    # Runs every day at 00:00 UTC (Change time if desired)
+    # Runs every day at 00:00 UTC (100% cloud-based on GitHub's servers)
     - cron: '0 0 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+  workflow_dispatch: # Allows you to manually trigger it anytime from GitHub UI
 
 permissions:
   contents: write
@@ -28,7 +28,7 @@ jobs:
         run: |
           python main.py
 
-      - name: 🚀 Commit and Push Changes
+      - name: 🚀 Commit and Push Changes to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -38,6 +38,7 @@ jobs:
           if ! git diff-index --quiet HEAD; then
             COMMIT_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "🤖 Auto update: Python daily commit - $COMMIT_DATE"
+            git pull --rebase origin main || true
             git push origin main
           else
             echo "No changes detected to commit."
