@@ -29,15 +29,20 @@ jobs:
           python main.py
 
       - name: 🚀 Commit and Push Changes to GitHub
+        env:
+          GIT_AUTHOR_NAME: "Rakhee123456"
+          GIT_AUTHOR_EMAIL: "rakheepandey5712@@gmail.com"
+          GIT_COMMITTER_NAME: "Rakhee123456"
+          GIT_COMMITTER_EMAIL: "rakheepandey5712@gmail.com"
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "sushant-me"
+          git config --global user.email "sushant.poudel2028@gmail.com"
           git add -A
           
           # Only commit if there are changes
           if ! git diff-index --quiet HEAD; then
             COMMIT_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-            git commit -m "🤖 Auto update: Python daily commit - $COMMIT_DATE"
+            git commit --author="sushant-me <sushant.poudel2028@gmail.com>" -m "🤖 Auto update: Python daily commit - $COMMIT_DATE"
             git pull --rebase origin main || true
             git push origin main
           else
