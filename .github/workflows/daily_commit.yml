@@ -42,7 +42,7 @@ jobs:
           # Only commit if there are changes
           if ! git diff-index --quiet HEAD; then
             COMMIT_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-            git commit --author="sushant-me <sushant.poudel2028@gmail.com>" -m "🤖 Auto update: Python daily commit - $COMMIT_DATE"
+            git commit --author="Rakhee123456 <rakheepandey5712@gmail.com" -m "🤖 Auto update: Python daily commit - $COMMIT_DATE"
             git pull --rebase origin main || true
             git push origin main
           else
