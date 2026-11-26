@@ -1,7 +1,7 @@
 {
   "start_date": "2026-08-26",
   "total_target_days": 367,
-  "total_commits": 96,
+  "total_commits": 97,
   "history": [
     {
       "day": 1,
@@ -674,6 +674,13 @@
       "timestamp_utc": "2026-11-25 06:06:13 UTC",
       "snippet_title": "Matrix Transpose",
       "snippet_code": "def transpose(matrix):\n    return [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]"
+    },
+    {
+      "day": 97,
+      "date": "2026-11-26",
+      "timestamp_utc": "2026-11-26 05:58:24 UTC",
+      "snippet_title": "Two Sum Lookup",
+      "snippet_code": "def two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return []"
     }
   ]
 }
